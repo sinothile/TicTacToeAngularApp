@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="ticTacToe.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div ng-app ="ticTacToeApp" ng-controller="TicTacToeController">
+            <div><button class="btn-primary btn-lg" ng-repeat="cell in board[0]" ng-disabled="checkForEndOfGame();" ng-click="move(cell);">{{ cell.value }}</button></div>
+            <div><button class="btn-primary btn-lg" ng-repeat="cell in board[1]" ng-disabled="checkForEndOfGame();" ng-click="move(cell);">{{ cell.value }}</button></div>
+            <div><button class="btn-primary btn-lg" ng-repeat="cell in board[2]" ng-disabled="checkForEndOfGame();"ng-click="move(cell);">{{ cell.value }}</button></div>
+            <br/>
+        <p>
+          <span ng-hide="winner || draw">Current Player: {{ currentPlayer }}</span>
+          <span ng-show="winner">Player {{ currentPlayer }} won!</span>
+          <span ng-show="draw">Draw</span>
+          <br>
+          <span ng-show="cellTaken" class ="taken"><b>{{cellTakenMessage}}</b></span>
+        </p>
+        <button ng-click="reset();" class="resetButton">New Game</button>
+    </div>
+  </body>
+</html>
